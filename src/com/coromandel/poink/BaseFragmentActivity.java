@@ -2,6 +2,8 @@ package com.coromandel.poink;
 
 
 
+import org.jraf.android.util.activitylifecyclecallbackscompat.app.LifecycleDispatchFragmentActivity;
+
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -11,7 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.View;
 
-public class BaseFragmentActivity extends FragmentActivity {
+public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 
 	private IFragmentWithClickEvents currentClickableFragment;
 
@@ -62,7 +64,12 @@ public class BaseFragmentActivity extends FragmentActivity {
 	
 	public void buttonClicked(View view)
     {
-    	if (currentClickableFragment!=null)
+		if (currentClickableFragment!=null)
+    	{
+    		currentClickableFragment.handleButtonClick(view);
+    	}
+		
+    	/*if (currentClickableFragment!=null)
     	{
     		//currentClickableFragment.handleButtonClick(view);
     		Fragment f = null;
@@ -88,7 +95,7 @@ public class BaseFragmentActivity extends FragmentActivity {
     	    ft.add(R.id.content_frame, f);
     	    
     	    ft.commit();
-    	}
+    	}*/
     }
 
 }

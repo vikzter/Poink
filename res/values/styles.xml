@@ -1,7 +1,7 @@
 <resources>
  	<color name="frag1_background">#fff0d6</color>
     <color name="frag2_background">#d6e5ff</color>
-    <!--
+      <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
@@ -18,4 +18,13 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="Theme.Default" parent="@android:style/Theme"></style>
+    <style name="Theme.NoTitle" parent="@android:style/Theme.NoTitleBar"></style>
+    <style name="Theme.FullScreen" parent="@android:style/Theme.NoTitleBar.Fullscreen"></style>
+    
+
 </resources>
+
+
+
+
