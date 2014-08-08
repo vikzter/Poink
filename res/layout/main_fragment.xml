@@ -29,7 +29,15 @@
     android:background="@drawable/bg_gradient"
      >
 
-   
+   <ImageView android:id="@+id/imgv_settings"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:layout_alignParentRight="true"
+       android:src="@drawable/settings_image"
+       android:onClick="buttonClicked"
+       android:layout_marginRight="20dp"
+       />
      
       <ImageView
 		android:id="@+id/imgv_middlecircle"

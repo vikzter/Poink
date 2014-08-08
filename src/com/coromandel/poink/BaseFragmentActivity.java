@@ -7,7 +7,7 @@ import org.jraf.android.util.activitylifecyclecallbackscompat.app.LifecycleDispa
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
@@ -66,7 +66,27 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
     {
 		if (currentClickableFragment!=null)
     	{
+			if (view.getId()==R.id.imgv_settings)
+			{
+				Fragment f= new SettingsFragment();
+				// Insert the fragment by replacing any existing fragment
+	    	    FragmentManager fragmentManager = getSupportFragmentManager();
+	    	    FragmentTransaction ft = fragmentManager.beginTransaction();
+	    	    ft.setCustomAnimations(R.anim.slide_in_up, 0,0,R.anim.slide_out_up);
+	    	    ft.addToBackStack(null);
+	    	    ft.add(R.id.content_frame, f);
+	    	    
+	    	    ft.commit();
+			}else 
+				/*if (view.getId()== R.id.button1settings)
+			{
+				FragmentManager fragmentManager = getSupportFragmentManager();
+				fragmentManager.popBackStack();
+					
+			}*/
+			{
     		currentClickableFragment.handleButtonClick(view);
+			}
     	}
 		
     	/*if (currentClickableFragment!=null)

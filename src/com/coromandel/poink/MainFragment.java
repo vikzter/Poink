@@ -36,7 +36,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -233,6 +233,9 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		 powerManager = (PowerManager) parentActivity.getSystemService(Context.POWER_SERVICE);
 		 
 		 parentActivity.registerReceiver(mReceiver, new IntentFilter(Intent.ACTION_SCREEN_OFF));
+		 
+		 //TESTING-REmove later
+		 lastPitch = -89;
 	}
 
 

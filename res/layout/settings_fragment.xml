@@ -1,22 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_gravity="center_horizontal"
     android:layout_height="match_parent"
     android:background="@color/frag1_background"
-   
-    
     android:clickable="true"
     android:orientation="vertical" >
-     <TextView
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_marginRight="7dp"
+    android:layout_marginLeft="15dp"
+    android:layout_gravity="left"
+    android:layout_height="match_parent"
+     android:clickable="true"
+    android:orientation="vertical">
+   <!--   <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="settings" />
+            android:text="settings" /> -->
 
-     <Button
+    <!--  <Button
          android:id="@+id/button1settings"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:onClick="buttonClicked"
-         android:text="Button" />
+         android:text="Button" /> -->
+     <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:text="@string/angletostartalerts"
+            android:textColor="@color/settings_text_color"
+            android:id="@+id/tv_angletostartalerts"
+             />
+     <RadioGroup
+        android:id="@+id/rg_angle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:clickable="true"
+        android:orientation="horizontal" >
 
+        <RadioButton
+            android:id="@+id/rb_angle45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:textSize="14sp"
+            android:clickable="true"
+            android:text="@string/angle45" />
+
+        <RadioButton
+            android:id="@+id/rb_angle75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginLeft="4dp"
+            android:clickable="true"
+            android:text="@string/angle75" />
+
+    </RadioGroup>
+     
+     <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/vibratefor"
+            android:textColor="@color/settings_text_color"
+            android:textSize="15sp"
+            android:id="@+id/tv_vibratefor"
+             />
+     
+     <RadioGroup
+        android:id="@+id/rg_vibratefor"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_vibrate5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:checked="true"
+            android:textSize="14sp"
+            android:text="@string/vibrate5" />
+
+        <RadioButton
+            android:id="@+id/rb_vibrate10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginLeft="6dp"
+            android:textSize="14sp"
+            android:text="@string/vibrate10" />
+
+    </RadioGroup>
+     
+     <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/helpus"
+            android:textColor="@color/settings_text_color"
+            android:textSize="15sp"
+            android:id="@+id/tv_helpus"
+             /> 
+             
+     <TextView android:id="@+id/tv_sharecircle"
+         android:background="@drawable/sharecircle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          	android:layout_gravity="center_horizontal"
+            android:gravity="center"
+         android:clickable="true"
+         android:textSize="15sp"
+         android:textColor="@color/frag1_background"
+         android:text="@string/share"
+         />
+</LinearLayout>
 </LinearLayout>
