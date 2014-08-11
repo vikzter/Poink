@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="4dp"
         android:clickable="true"
+        
         android:orientation="horizontal" >
 
         <RadioButton
@@ -79,6 +80,7 @@
         android:id="@+id/rg_vibratefor"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        
         android:layout_marginLeft="4dp"
         android:orientation="horizontal" >
 
@@ -98,6 +100,7 @@
             android:clickable="true"
             android:layout_marginLeft="6dp"
             android:textSize="14sp"
+            
             android:text="@string/vibrate10" />
 
     </RadioGroup>

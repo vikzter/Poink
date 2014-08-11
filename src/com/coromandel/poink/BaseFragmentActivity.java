@@ -4,6 +4,7 @@ package com.coromandel.poink;
 
 import org.jraf.android.util.activitylifecyclecallbackscompat.app.LifecycleDispatchFragmentActivity;
 
+
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -15,8 +16,11 @@ import android.view.View;
 
 public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 
-	private IFragmentWithClickEvents currentClickableFragment;
-
+	//private IFragmentWithClickEvents currentClickableFragment;
+	MainFragment firstFragment;
+	SettingsFragment settingsFragment;
+	FragmentManager fragmentManager;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,15 +38,20 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
             }
 
             // Create a new Fragment to be placed in the activity layout
-            MainFragment firstFragment = new MainFragment();
+            firstFragment = new MainFragment();
+            settingsFragment = new SettingsFragment();
             
+            fragmentManager = getSupportFragmentManager();
+            		
             // In case this activity was started with special instructions from an
             // Intent, pass the Intent's extras to the fragment as arguments
             firstFragment.setArguments(getIntent().getExtras());
             
+            
             // Add the fragment to the 'fragment_container' FrameLayout
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content_frame, firstFragment).commit();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+            ft.addToBackStack(null);
+            ft.add(R.id.content_frame, firstFragment).commit();
         }
 	}
 
@@ -58,64 +67,52 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 		// TODO Auto-generated method stub
 		super.onAttachFragment(fragment);
 
-		currentClickableFragment = (IFragmentWithClickEvents) fragment;
+		
 
 	}
 	
-	public void buttonClicked(View view)
-    {
-		if (currentClickableFragment!=null)
-    	{
-			if (view.getId()==R.id.imgv_settings)
-			{
-				Fragment f= new SettingsFragment();
-				// Insert the fragment by replacing any existing fragment
-	    	    FragmentManager fragmentManager = getSupportFragmentManager();
-	    	    FragmentTransaction ft = fragmentManager.beginTransaction();
+	private void settingsClicked()
+	{
+		if(settingsFragment.isVisible())
+		{
+			fragmentManager.popBackStack();
+		}else
+		{
+			 FragmentTransaction ft = fragmentManager.beginTransaction();
 	    	    ft.setCustomAnimations(R.anim.slide_in_up, 0,0,R.anim.slide_out_up);
 	    	    ft.addToBackStack(null);
-	    	    ft.add(R.id.content_frame, f);
-	    	    
-	    	    ft.commit();
-			}else 
-				/*if (view.getId()== R.id.button1settings)
-			{
-				FragmentManager fragmentManager = getSupportFragmentManager();
-				fragmentManager.popBackStack();
-					
-			}*/
-			{
-    		currentClickableFragment.handleButtonClick(view);
-			}
-    	}
-		
-    	/*if (currentClickableFragment!=null)
-    	{
-    		//currentClickableFragment.handleButtonClick(view);
-    		Fragment f = null;
-    		
-    		if(view.getId()== R.id.button1main)
-    		{
-    			f= new SettingsFragment();
-    			
-    			
-    		}
-    		
-    		if(view.getId()== R.id.button1settings)
-    		{
-    			f= new MainFragment();
-    			
-    		}
-    		
-    		// Insert the fragment by replacing any existing fragment
-    	    FragmentManager fragmentManager = getSupportFragmentManager();
-    	    FragmentTransaction ft = fragmentManager.beginTransaction();
-    	    ft.setCustomAnimations(R.anim.slide_in_up, 0,0,R.anim.slide_out_up);
-    	    ft.addToBackStack(null);
-    	    ft.add(R.id.content_frame, f);
-    	    
-    	    ft.commit();
-    	}*/
+	    	    ft.add(R.id.content_frame, settingsFragment);
+	    	   ft.commit();
+		}
+	}
+	
+	
+	public void buttonClicked(View view)
+    {
+		switch(view.getId())
+		{
+			case R.id.imgv_settings:
+				this.settingsClicked();
+			break;
+			
+			default:
+				if(settingsFragment.isVisible())
+				{
+					settingsFragment.handleButtonClick(view);
+				}else 
+				{
+					firstFragment.handleButtonClick(view);
+				}
+		}
     }
+	
+	public void layoutClicked(View v)
+	{
+		if(settingsFragment.isVisible())
+		{
+			fragmentManager.popBackStack();
+		}
+		
+	}
 
 }

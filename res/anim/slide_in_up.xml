@@ -3,6 +3,6 @@
     android:duration="@android:integer/config_shortAnimTime"
     android:fromYDelta="100%p"
     android:toYDelta="20%p" 
-   
+   android:fillAfter="true"
     
     />

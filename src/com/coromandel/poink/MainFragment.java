@@ -87,7 +87,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 	AppStates isOn = AppStates.Off;
 	AlertStates currentAlertState = AlertStates.Off;
 	Date alertStateSince = null;
-	private long NUM_SECONDS_TO_VIBRATE = 10;
+	
 
 	ImageView middle;
 	ImageView main;
@@ -122,7 +122,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 	private final double MINIMUM_PITCH_WHEN_OFF = -50;
 	private final double MAXIMUM_PITCH_WHEN_OFF = -90;
 
-	private final double MINIMUM_PITCH_WHEN_ON = -40;
+	
 	private final double MIDDLE_PITCH_WHEN_ON = -60;
 	private final double MAXIMUM_PITCH_WHEN_ON = -90;
 
@@ -156,10 +156,10 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 			// For post api 11 check for vibrator like this
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
 					&& !vibrator.hasVibrator()) {
-				NUM_SECONDS_TO_VIBRATE = 0;
+				Globals.setVibrateFor(parentActivity, 0);//set vibrate to 0 seconds
 			}
 		} else {
-			NUM_SECONDS_TO_VIBRATE = 0;
+			Globals.setVibrateFor(parentActivity, 0);//set vibrate to 0 seconds
 		}
 
 		Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
@@ -601,6 +601,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 			pitchAtInterval1 = pitchAtInterval2;
 			pitchAtInterval2 = pitchAtInterval3;
 			pitchAtInterval3 = lastPitch;
+			double MINIMUM_PITCH_WHEN_ON = -90 + Globals.getTiltAngle(parentActivity);
 			if (isOn == AppStates.Off) {
 				if ((pitchAtInterval1 <= MINIMUM_PITCH_WHEN_OFF && pitchAtInterval1 >= MAXIMUM_PITCH_WHEN_OFF)
 						&& (pitchAtInterval2 <= MINIMUM_PITCH_WHEN_OFF && pitchAtInterval2 >= MAXIMUM_PITCH_WHEN_OFF)
@@ -653,7 +654,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 				long timediffseconds = TimeUnit.MILLISECONDS
 						.toSeconds(timediff);
 
-				if (timediffseconds > NUM_SECONDS_TO_VIBRATE) {
+				if (timediffseconds > Globals.getVibrateFor(parentActivity)) {
 					// Start ringing
 					if (!ringtone.isPlaying())
 					{

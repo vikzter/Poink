@@ -2,6 +2,7 @@ package com.coromandel.poink;
 
 import android.app.Activity;
 import android.graphics.Typeface;
+
 import android.os.Bundle;
 
 
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 
 import android.widget.TextView;
@@ -69,8 +72,58 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 		secs5.setTypeface(tf,Typeface.NORMAL);
 		secs10.setTypeface(tf,Typeface.NORMAL);
 		
+		secs10.setChecked(true);
 		
+		RadioGroup rg_angle=(RadioGroup) parentActivity.findViewById(R.id.rg_angle);
+		rg_angle.setOnCheckedChangeListener(angleChangedListener);
+		
+		RadioGroup rg_vibratefor=(RadioGroup) parentActivity.findViewById(R.id.rg_vibratefor);
+		rg_vibratefor.setOnCheckedChangeListener(vibratetimeChangedListener);
+		
+		
+		if(Globals.getTiltAngle(parentActivity)==0)
+		{
+			tiltAngle.setVisibility(View.GONE);
+			rg_angle.setVisibility(View.GONE);
+		}
 		
 	}
 	
+	private OnCheckedChangeListener angleChangedListener =  new OnCheckedChangeListener() 
+    {
+
+        public void onCheckedChanged(RadioGroup group, int checkedId) 
+           {
+            
+            if(degree45.isChecked())
+              {
+            		Globals.setTiltAngle(parentActivity, 45);
+                      
+              }
+            else if(degree75.isChecked())
+              {
+            	Globals.setTiltAngle(parentActivity, 75);
+              }
+         }
+    };
+    
+    
+	private OnCheckedChangeListener vibratetimeChangedListener =  new OnCheckedChangeListener() 
+    {
+
+        public void onCheckedChanged(RadioGroup group, int checkedId) 
+           {
+            
+            if(secs5.isChecked())
+              {
+
+                      Globals.setVibrateFor(parentActivity, 5);
+              }
+            else if(secs10.isChecked())
+              {
+            	Globals.setVibrateFor(parentActivity, 10);
+
+              }
+         }
+    };
 }

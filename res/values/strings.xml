@@ -24,5 +24,6 @@
     <string name="vibrate5">5 secs</string>
     <string name="vibrate10">10 secs</string>
     <string name="share">Share</string>
-    
+    <integer name="tiltAngleDefault">45</integer>
+    <integer name="vibrateSecondsDefault">10</integer>
 </resources>

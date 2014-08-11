@@ -27,6 +27,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
+    
+    android:onClick="layoutClicked"
      >
 
    <ImageView android:id="@+id/imgv_settings"
@@ -36,6 +38,10 @@
        android:layout_alignParentRight="true"
        android:src="@drawable/settings_image"
        android:onClick="buttonClicked"
+       android:paddingLeft="15dp"
+       android:paddingRight="15dp"
+       android:paddingTop="10dp"
+       android:paddingBottom="15dp"
        android:layout_marginRight="20dp"
        />
      

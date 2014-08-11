@@ -30,9 +30,12 @@ public class BaseAnimationFragment extends android.support.v4.app.Fragment {
             }
 
             public void onAnimationEnd(Animation animation) {
+            	
             	correctViewActualPosition();
                
             }
+            
+            
         });
         
 
@@ -40,6 +43,7 @@ public class BaseAnimationFragment extends android.support.v4.app.Fragment {
     }
     private void correctViewActualPosition()
     {
+    	this.getView().clearAnimation();
     	View parent = (View) this.getView().getParent();
 		
 		int height = parent.getHeight();
@@ -52,7 +56,7 @@ public class BaseAnimationFragment extends android.support.v4.app.Fragment {
 		
 		LayoutParams params = new LayoutParams(mainwidth, mainheight);
 		params.addRule(RelativeLayout.CENTER_HORIZONTAL,-1);
-		params.setMargins(20, maintop+moveBy, 20, 0);
+		params.setMargins(20, maintop + moveBy, 20, 0);
 		this.getView().setLayoutParams(params);
     }
 }
