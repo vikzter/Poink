@@ -1,17 +1,12 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
  
     android:shape="ring"
-    android:innerRadius="1dp"
-    android:useLevel="false">
+    android:innerRadiusRatio = "5"
+    android:useLevel="false"
+    >
     
+    <solid android:color="#ffe5f8f7" />
     
-    <gradient
-		android:endColor="#ffe5f8f7"
-		android:gradientRadius="150"
-		android:startColor="#ffe5f8f7"
-		android:type="radial"
-		android:useLevel="false" />
-   
     <size
         android:height="15dp"
         android:width="15dp" />

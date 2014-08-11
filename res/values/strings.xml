@@ -18,12 +18,15 @@
     <string name="poinkstopped">Poink Stopped</string>
     <string name="angletostartalerts">Phone tilt angle at which the Wakeup alert should begin</string>
     <string name="vibratefor">During the wakeup alert, vibrate the phone for _ seconds before starting the ringing sound</string>
-    <string name="helpus">Help us keep Poink free, simply by sharing</string>
+    <string name="helpus">Help us keep Poink free. Just Share</string>
     <string name="angle45">45 degrees</string>
     <string name="angle75">75 degrees</string>
     <string name="vibrate5">5 secs</string>
     <string name="vibrate10">10 secs</string>
     <string name="share">Share</string>
+    <string name="settings">SETTINGS</string>
+    
+    
     <integer name="tiltAngleDefault">45</integer>
     <integer name="vibrateSecondsDefault">10</integer>
 </resources>

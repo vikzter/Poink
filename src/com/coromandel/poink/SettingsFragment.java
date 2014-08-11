@@ -1,6 +1,7 @@
 package com.coromandel.poink;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import android.widget.RadioButton;
@@ -26,6 +28,7 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 	
 	
 	private TextView share;
+	private TextView settings;
 	private TextView tiltAngle;
 	private TextView vibrateFor;
 	private RadioButton degree45;
@@ -55,6 +58,7 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 		parentActivity = getActivity();
 		
 		share = (TextView) parentActivity.findViewById(R.id.tv_sharecircle);
+		settings = (TextView) parentActivity.findViewById(R.id.tv_settings);
 		tiltAngle = (TextView) parentActivity.findViewById(R.id.tv_angletostartalerts);
 		vibrateFor=(TextView)parentActivity.findViewById(R.id.tv_vibratefor);
 		degree45=(RadioButton)parentActivity.findViewById(R.id.rb_angle45);
@@ -64,6 +68,7 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 		
 		Typeface tf = Typeface.createFromAsset(parentActivity.getAssets(),"fonts/AlteHaasGroteskRegular.ttf");
 		
+		settings.setTypeface(tf,Typeface.NORMAL);
 		share.setTypeface(tf,Typeface.NORMAL);
 		tiltAngle.setTypeface(tf,Typeface.NORMAL);
 		vibrateFor.setTypeface(tf,Typeface.NORMAL);
@@ -87,7 +92,21 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 			rg_angle.setVisibility(View.GONE);
 		}
 		
+		share.setOnClickListener(shareClickedListener);
 	}
+	
+	private OnClickListener shareClickedListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+			sharingIntent.setType("text/plain");
+			
+			sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out Poink");
+			sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "I just found this useful app that helps me stay awake.It's called Poink.");
+			startActivity(Intent.createChooser(sharingIntent, "Share via"));
+		}
+	};
 	
 	private OnCheckedChangeListener angleChangedListener =  new OnCheckedChangeListener() 
     {

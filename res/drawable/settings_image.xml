@@ -2,15 +2,15 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item  android:drawable="@drawable/small_circle"
-        android:top="2dp"
+        android:top="0dp"
          ></item>
 
     <item  android:drawable="@drawable/small_circle"
-        android:top="19dp"
+        android:top="20dp"
         ></item>
     
     <item  android:drawable="@drawable/small_circle"
-        android:top="36dp"
+        android:top="40dp"
         ></item>
     
 </layer-list>
