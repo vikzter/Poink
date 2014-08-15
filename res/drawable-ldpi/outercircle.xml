@@ -7,12 +7,7 @@
     android:useLevel="false">
     
     
-    <gradient
-		android:endColor="#ffe5f8f7"
-		android:gradientRadius="150"
-		android:startColor="#ffe5f8f7"
-		android:type="radial"
-		android:useLevel="false" />
+   <solid android:color="#ffffffff" />
    
     <size
         android:height="60dp"

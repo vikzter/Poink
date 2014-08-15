@@ -181,6 +181,8 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		timer.setTypeface(tf, Typeface.NORMAL);
 		textDisplay.setTypeface(tf, Typeface.NORMAL);
 
+		
+		
 		middle.setVisibility(View.INVISIBLE);
 		main.setVisibility(View.INVISIBLE);
 		hidden.setVisibility(View.INVISIBLE);
@@ -236,6 +238,12 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		 
 		 //TESTING-REmove later
 		 lastPitch = -89;
+		 
+		 
+		//TODO:REMOVE THIS
+			//timer.setVisibility(View.INVISIBLE);
+			//textDisplay.setVisibility(View.INVISIBLE);
+			
 	}
 
 
