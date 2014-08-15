@@ -217,7 +217,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		mNotificationManager = (NotificationManager) parentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
 		Context context = parentActivity.getApplicationContext();
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(parentActivity)
-		.setSmallIcon(R.drawable.ic_launcher);      
+		.setSmallIcon(R.drawable.ic_notif);      
 
 		Intent intent = new Intent(context, MainFragment.class);
 		PendingIntent pIntent = PendingIntent.getActivity(context, 7 , intent, Notification.FLAG_ONGOING_EVENT);

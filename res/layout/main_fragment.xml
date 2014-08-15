@@ -31,19 +31,26 @@
     android:onClick="layoutClicked"
      >
 
-   <ImageView android:id="@+id/imgv_settings"
+     <ImageView android:id="@+id/imgv_logo"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="20dp"
+       android:layout_marginTop="7dp"
+       android:layout_alignParentLeft="true"
+       android:src="@drawable/ic_withinapp_icon"
+       android:layout_marginLeft="5dp"
+       />
+     
+   <ImageView
+       android:id="@+id/imgv_settings"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
        android:layout_alignParentRight="true"
-       android:src="@drawable/settings_image"
+       android:layout_marginRight="10dp"
+       
        android:onClick="buttonClicked"
        android:paddingLeft="15dp"
        android:paddingRight="15dp"
-       android:paddingTop="10dp"
-       android:paddingBottom="15dp"
-       android:layout_marginRight="20dp"
-       />
+       android:src="@drawable/settings_image" />
      
       <ImageView
 		android:id="@+id/imgv_middlecircle"
