@@ -2,6 +2,7 @@
  	<color name="frag1_background">#555555</color>
  	<color name="settings_text_color">#77ccc5</color>
     <color name="frag2_background">#d6e5ff</color>
+    <color name="fullwhite">#ffffffff</color>
       <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.

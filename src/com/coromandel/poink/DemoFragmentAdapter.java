@@ -9,7 +9,7 @@ public class DemoFragmentAdapter extends FragmentPagerAdapter{
 	 /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 3;
+    private static final int NUM_PAGES = 5;
 
 	
 	public DemoFragmentAdapter(FragmentManager fm) {
@@ -31,6 +31,12 @@ public class DemoFragmentAdapter extends FragmentPagerAdapter{
 			break;
 		case 2:
 			f=new DemoFragment3();
+			break;
+		case 3:
+			f=new DemoFragment4();
+			break;
+		case 4:
+			f=new DemoFragment5();
 			break;
 		}
 		

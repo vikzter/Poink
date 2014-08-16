@@ -16,11 +16,12 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        
           android:theme="@style/Theme.NoTitle"
         android:name="com.coromandel.poink.MyApp" >
         
         <activity
-            android:name="com.coromandel.poink.BaseFragmentActivity"
+            android:name="com.coromandel.poink.DemoActivity"
             android:screenOrientation="portrait" 
             android:label="@string/app_name" >
             <intent-filter>

@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@color/fullwhite"
+     >
 
-    <RatingBar
-        android:id="@+id/ratingBar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+     <ImageView android:id="@+id/imgv_demo3image"
+       android:layout_width="wrap_content"
+         android:layout_marginTop="20dp"
+       android:layout_centerHorizontal="true"
+       android:layout_height="wrap_content"
+       android:src="@drawable/demo_page3"
 
-</LinearLayout>
+       />
+     
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:id="@+id/tv_demopage3content"
+         
+         android:layout_marginRight="10dp"
+         android:layout_marginLeft="10dp"
+         android:layout_marginBottom="20dp"
+         android:gravity="center_horizontal"
+         android:text="@string/demopage3content"
+         android:textSize="23sp"
+         >
+         
+     </TextView>
+</RelativeLayout>
+

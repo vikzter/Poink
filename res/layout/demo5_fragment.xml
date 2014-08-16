@@ -5,26 +5,19 @@
     android:background="@color/fullwhite"
      >
 
-     <ImageView android:id="@+id/imgv_demo1image"
-       android:layout_width="wrap_content"
-         android:layout_marginTop="20dp"
-       android:layout_centerHorizontal="true"
-       android:layout_height="wrap_content"
-       android:src="@drawable/demo_page1"
-
-       />
+   
      
      <TextView
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_alignParentBottom="true"
-         android:id="@+id/tv_demopage1content"
+         
+         android:id="@+id/tv_demopage5content"
          
          android:layout_marginRight="10dp"
          android:layout_marginLeft="10dp"
-         android:layout_marginBottom="20dp"
-         android:gravity="center_horizontal"
-         android:text="@string/demopage1content"
+         android:gravity="center"
+         
+         android:text="@string/demopage5content"
          android:textSize="23sp"
          >
          
