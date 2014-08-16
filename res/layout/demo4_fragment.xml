@@ -10,7 +10,7 @@
          android:layout_marginTop="20dp"
        android:layout_centerHorizontal="true"
        android:layout_height="wrap_content"
-       android:src="@drawable/demo_page4"
+       android:src="@drawable/new_page5"
 
        />
      
@@ -25,6 +25,7 @@
          android:layout_marginBottom="20dp"
          android:gravity="center_horizontal"
          android:text="@string/demopage4content"
+         android:textColor="@color/frag1_background"
          android:textSize="23sp"
          >
          

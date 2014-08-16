@@ -6,7 +6,7 @@
      >
 
      <ImageView android:id="@+id/imgv_demo3image"
-       android:layout_width="wrap_content"
+       android:layout_width="match_parent"
          android:layout_marginTop="20dp"
        android:layout_centerHorizontal="true"
        android:layout_height="wrap_content"
@@ -25,6 +25,7 @@
          android:layout_marginBottom="20dp"
          android:gravity="center_horizontal"
          android:text="@string/demopage3content"
+         android:textColor="@color/frag1_background"
          android:textSize="23sp"
          >
          

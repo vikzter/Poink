@@ -15,10 +15,12 @@
          
          android:layout_marginRight="10dp"
          android:layout_marginLeft="10dp"
-         android:gravity="center"
          
+         android:layout_centerVertical="true"
+         android:layout_centerHorizontal="true"
          android:text="@string/demopage5content"
          android:textSize="23sp"
+         android:textColor="@color/frag1_background"
          >
          
      </TextView>

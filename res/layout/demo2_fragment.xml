@@ -25,6 +25,7 @@
          android:layout_marginBottom="20dp"
          android:gravity="center_horizontal"
          android:text="@string/demopage2content"
+         android:textColor="@color/frag1_background"
          android:textSize="23sp"
          >
          
