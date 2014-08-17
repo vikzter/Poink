@@ -74,7 +74,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 	}
 
 	private enum AlertStates {
-		Maximum, Medium, Off
+		Maximum, Off
 	};
 
 	private Activity parentActivity;
@@ -368,6 +368,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 				{
 					Globals.wakelock.acquire();
 				}
+				textDisplay.setText(R.string.itsallgood);
 
 			}
 
@@ -625,13 +626,9 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 						&& pitchAtInterval2 > MINIMUM_PITCH_WHEN_ON
 						&& pitchAtInterval3 > MINIMUM_PITCH_WHEN_ON) {
 					MaximumAlertUser();
-				} else if ((pitchAtInterval1 <= MINIMUM_PITCH_WHEN_ON && pitchAtInterval1 >= MIDDLE_PITCH_WHEN_ON)
-						&& (pitchAtInterval2 <= MINIMUM_PITCH_WHEN_ON && pitchAtInterval2 >= MIDDLE_PITCH_WHEN_ON)
-						&& (pitchAtInterval3 <= MINIMUM_PITCH_WHEN_ON && pitchAtInterval3 >= MIDDLE_PITCH_WHEN_ON)) {
-					MediumAlertUser();
-				} else if ((pitchAtInterval1 <= MIDDLE_PITCH_WHEN_ON && pitchAtInterval1 >= MAXIMUM_PITCH_WHEN_ON)
-						&& (pitchAtInterval2 <= MIDDLE_PITCH_WHEN_ON && pitchAtInterval2 >= MAXIMUM_PITCH_WHEN_ON)
-						&& (pitchAtInterval3 <= MIDDLE_PITCH_WHEN_ON && pitchAtInterval3 >= MAXIMUM_PITCH_WHEN_ON)) {
+				} else if ((pitchAtInterval1 <= MINIMUM_PITCH_WHEN_ON && pitchAtInterval1 >= MAXIMUM_PITCH_WHEN_ON)
+						&& (pitchAtInterval2 <= MINIMUM_PITCH_WHEN_ON && pitchAtInterval2 >= MAXIMUM_PITCH_WHEN_ON)
+						&& (pitchAtInterval3 <= MINIMUM_PITCH_WHEN_ON && pitchAtInterval3 >= MAXIMUM_PITCH_WHEN_ON)) {
 					NoAlertsUser();
 				}
 
@@ -692,7 +689,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 
 	}
 
-	private void MediumAlertUser() {
+/*	private void MediumAlertUser() {
 		if (currentAlertState != AlertStates.Medium) {
 			alertStateSince = null;
 			main.clearAnimation();
@@ -706,7 +703,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 			
 		}
 	}
-
+*/
 	private void NoAlertsUser() {
 		if (currentAlertState != AlertStates.Off) {
 			alertStateSince = null;
