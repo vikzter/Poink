@@ -4,7 +4,13 @@ package com.coromandel.poink;
 
 import org.jraf.android.util.activitylifecyclecallbackscompat.app.LifecycleDispatchFragmentActivity;
 
+import com.coromandel.poink.MainFragment.AppStates;
 
+
+import android.app.AlertDialog;
+import android.app.Application;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -50,7 +56,7 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
             
             // Add the fragment to the 'fragment_container' FrameLayout
             FragmentTransaction ft = fragmentManager.beginTransaction();
-            ft.addToBackStack(null);
+            //ft.addToBackStack(null);
             ft.add(R.id.content_frame, firstFragment).commit();
         }
 	}
@@ -114,5 +120,36 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 		}
 		
 	}
+	
+	 @Override
+	 public void onBackPressed() { 
+	      //TODO: Handle back press on application and in all other starting activities
+	    	//return;
+		 if(firstFragment!=null && firstFragment.isOn != AppStates.Off & firstFragment.isOn != AppStates.TransitingToOff)
+	    	this.checkAndExit();
+		 else
+			 finish();
+		 
+	 }
+	 
+	 private void checkAndExit() {
+
+	        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+	                BaseFragmentActivity.this);
+
+	        alertDialog.setCancelable(false);
+	        alertDialog.setPositiveButton(R.string.Yes, new OnClickListener() {
+
+	            @Override
+	            public void onClick(DialogInterface dialog, int which) {
+	               // finish();
+	            }
+	        });
+
+	        alertDialog.setNegativeButton(R.string.No, null);
+
+	        alertDialog.setMessage(R.string.exitwhenon);
+	        alertDialog.show();
+	    }
 
 }

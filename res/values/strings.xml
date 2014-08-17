@@ -35,6 +35,13 @@
     <string name="shareemailtext">I just found a useful app that helps me stay awake, whenever Iam trying to avoid falling asleep.\n\nIt\'s called Poink.Check it out!</string>
     <string name="shareviatext">Share via</string>
     
+    <string name="exitwhenon">Poink is currently activated and will continue checking the phone tilt even after you\'ve exited the app. 
+        						\n\nYou can return to Poink at any time if you need to switch it off.
+        						\n\nAre you sure you want to exit now?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    
+    
     <integer name="tiltAngleDefault">45</integer>
     <integer name="vibrateSecondsDefault">10</integer>
 </resources>

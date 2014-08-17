@@ -69,7 +69,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		return inflater.inflate(R.layout.main_fragment, container, false);
 	}
 
-	private enum AppStates {
+	enum AppStates {
 		On, Off, TransitingToOn, TransitingToOff,Paused
 	}
 
