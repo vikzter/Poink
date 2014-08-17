@@ -45,11 +45,14 @@ public class DemoFragment5 extends Fragment{
 		
 		@Override
 		public void onClick(View v) {
+			PreferencesHelper.setDemoShownSetting(parentActivity, true);
+			
 			Intent intent = new Intent(parentActivity, BaseFragmentActivity.class);
 			/*intent.putExtra(Constants.EXTRA_GCMREGISTRATIONID, gcmRegistrationId);
 			intent.putExtra(Constants.EXTRA_EXISTINGUSERORDEVICE, s);*/
 			startActivity(intent);
 			parentActivity.overridePendingTransition(0, 0);
+			
 			parentActivity.finish();
 		}
 	};

@@ -40,4 +40,19 @@ public class PreferencesHelper {
 		editor.commit();
 	}
 	
+	public static boolean getDemoShownSetting(Context c)
+	{
+		SharedPreferences sharedPref = c.getSharedPreferences(Constants.APP_NAME, Context.MODE_PRIVATE);
+		boolean returnVal = sharedPref.getBoolean(Constants.DEMO_SHOWN_SETTING, false);
+		return returnVal;
+	}
+	
+	public static void setDemoShownSetting(Context c, boolean value)
+	{
+		SharedPreferences sharedPref = c.getSharedPreferences(Constants.APP_NAME, Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPref.edit();
+		editor.putBoolean(Constants.DEMO_SHOWN_SETTING, value);
+		editor.commit();
+	}
+	
 }

@@ -2,9 +2,11 @@ package com.coromandel.poink;
 
 import org.jraf.android.util.activitylifecyclecallbackscompat.app.LifecycleDispatchFragmentActivity;
 
+
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -22,12 +24,21 @@ public class DemoActivity extends LifecycleDispatchFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_demo);
 		
+		if(PreferencesHelper.getDemoShownSetting(this))
+		{
+			Intent intent = new Intent(this, BaseFragmentActivity.class);
+		    startActivity(intent);
+		    overridePendingTransition(0,0);
+		    finish();
+		}else
+		{
+		
 		 mAdapter = new DemoFragmentAdapter(getSupportFragmentManager()); 
 		 mPager = (ViewPager)findViewById(R.id.pager); 
 		 mPager.setAdapter(mAdapter); 
 		 mIndicator = (CirclePageIndicator)findViewById(R.id.indicator); 
 		 mIndicator.setViewPager(mPager); 
-
+		}
 	}
 	
 	@Override
