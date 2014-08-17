@@ -7,7 +7,7 @@
 
      <ImageView android:id="@+id/imgv_demo3image"
        android:layout_width="match_parent"
-         android:layout_marginTop="20dp"
+         android:layout_marginTop="@dimen/demo_image_topmargin"
        android:layout_centerHorizontal="true"
        android:layout_height="wrap_content"
        android:src="@drawable/demo_page3"
@@ -26,7 +26,7 @@
          android:gravity="center_horizontal"
          android:text="@string/demopage3content"
          android:textColor="@color/frag1_background"
-         android:textSize="23sp"
+         android:textSize="@dimen/demo_text_size"
          >
          
      </TextView>

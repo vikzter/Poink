@@ -19,8 +19,26 @@
          android:layout_centerVertical="true"
          android:layout_centerHorizontal="true"
          android:text="@string/demopage5content"
-         android:textSize="23sp"
+         android:textSize="@dimen/demo_text_size"
          android:textColor="@color/frag1_background"
+         >
+         
+     </TextView>
+     
+     <TextView
+          android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_alignParentBottom="true"
+         android:layout_marginRight="10dp"
+         android:layout_marginBottom="10dp"
+         android:background="@drawable/gotit_circle"
+         android:textColor="@color/fullwhite"
+         android:text="@string/demogotit"
+         android:id="@+id/tv_gotit"
+         android:clickable="true"
+         android:gravity="center"
+         android:textSize="18sp"
          >
          
      </TextView>

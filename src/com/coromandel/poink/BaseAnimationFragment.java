@@ -47,7 +47,7 @@ public class BaseAnimationFragment extends android.support.v4.app.Fragment {
     	View parent = (View) this.getView().getParent();
 		
 		int height = parent.getHeight();
-		int moveBy = height * 20 / 100;
+		int moveBy = height * 15 / 100;
 
 		int mainheight = this.getView().getHeight();
 		int mainwidth = this.getView().getWidth();

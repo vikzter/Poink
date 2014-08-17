@@ -18,7 +18,7 @@
     <string name="poinkstopped">Poink Stopped</string>
     <string name="angletostartalerts">Phone tilt angle at which the Wakeup alert should begin</string>
     <string name="vibratefor">During the wakeup alert, vibrate the phone for _ seconds before starting the ringing sound</string>
-    <string name="helpus">Help us keep Poink free. Just Share</string>
+    <string name="helpus">Like Poink? Tell your friends</string>
     <string name="angle45">45 degrees</string>
     <string name="angle75">75 degrees</string>
     <string name="vibrate5">5 secs</string>
@@ -26,13 +26,14 @@
     <string name="share">Share</string>
     <string name="settings">SETTINGS</string>
     
-    <string name="demopage1content">Once you open Poink, hold the phone upright and click the centre circle to start&#8230;</string>
-    <string name="demopage2content">Poink is now activated and running in the background&#8230;</string>
+    <string name="demopage1content">Whenever you open Poink, you\'ll see this green screen.The centre circle is used to start/stop Poink&#8230;</string>
+    <string name="demopage2content">Once Poink is switched on, it starts running in the background&#8230;</string>
     <string name="demopage3content">You can continue with other things, but keep holding the phone upright&#8230;</string>
-    <string name="demopage4content">If you start falling asleep, the phone in your hand tilts.\nPoink instantly starts alerting you and continues to do so till you hold the phone upright again.</string>
+    <string name="demopage4content">When you start falling asleep, the phone in your hand tilts.\nPoink senses this and starts alerting you till you hold the phone upright again.</string>
     <string name="demopage5content">Thats it! You are ready to use Poink now.\n\nMake sure to use Poink in a stable environment where no harm can occur to the phone or any person.</string>
-    <string name="demogotit">Got it, lets start</string>
-    
+    <string name="demogotit">Got it.</string>
+    <string name="shareemailtext">I just found a useful app that helps me stay awake, whenever Iam trying to avoid falling asleep.\n\nIt\'s called Poink.Check it out!</string>
+    <string name="shareviatext">Share via</string>
     
     <integer name="tiltAngleDefault">45</integer>
     <integer name="vibrateSecondsDefault">10</integer>

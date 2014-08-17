@@ -1,0 +1,5 @@
+<resources>
+<style name="settingsstyle">
+        <item name="android:layout_height">27dp</item>
+</style>
+</resources>

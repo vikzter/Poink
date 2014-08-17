@@ -71,7 +71,7 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 
 	}
 	
-	private void settingsClicked()
+	protected void settingsClicked()
 	{
 		if(settingsFragment.isVisible())
 		{

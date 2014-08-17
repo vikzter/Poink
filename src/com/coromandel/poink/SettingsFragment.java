@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -28,14 +29,15 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 	
 	
 	private TextView share;
-	private TextView settings;
+	
 	private TextView tiltAngle;
 	private TextView vibrateFor;
 	private RadioButton degree45;
 	private RadioButton degree75;
 	private RadioButton secs5;
 	private RadioButton secs10;
-	
+	private LinearLayout rootLayout;
+	private View view;
 	
 	@Override
 	public void handleButtonClick(View v) {
@@ -45,7 +47,8 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.settings_fragment, container, false);
+		view = inflater.inflate(R.layout.settings_fragment, container, false);
+		return view;
 		// Inflate the layout for this fragment
 		
 	}
@@ -57,8 +60,9 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 		
 		parentActivity = getActivity();
 		
+		rootLayout = (LinearLayout) parentActivity.findViewById(R.id.settings_root_layout);
 		share = (TextView) parentActivity.findViewById(R.id.tv_sharecircle);
-		settings = (TextView) parentActivity.findViewById(R.id.tv_settings);
+		
 		tiltAngle = (TextView) parentActivity.findViewById(R.id.tv_angletostartalerts);
 		vibrateFor=(TextView)parentActivity.findViewById(R.id.tv_vibratefor);
 		degree45=(RadioButton)parentActivity.findViewById(R.id.rb_angle45);
@@ -68,7 +72,7 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 		
 		Typeface tf = Typeface.createFromAsset(parentActivity.getAssets(),"fonts/AlteHaasGroteskRegular.ttf");
 		
-		settings.setTypeface(tf,Typeface.NORMAL);
+		
 		share.setTypeface(tf,Typeface.NORMAL);
 		tiltAngle.setTypeface(tf,Typeface.NORMAL);
 		vibrateFor.setTypeface(tf,Typeface.NORMAL);
@@ -93,7 +97,33 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 		}
 		
 		share.setOnClickListener(shareClickedListener);
+		view.setOnTouchListener(new OnSwipeTouchListener(parentActivity) {
+		    @Override
+		    public void onSwipeBottom() {
+		        BaseFragmentActivity bfa = (BaseFragmentActivity) parentActivity;
+		        bfa.settingsClicked();
+		    }
+		    
+		    
+		    public void onSwipeTop() {
+		        
+		    }
+		    
+		    
+		    public void onSwipeRight() {
+		        
+		    }
+		    
+		    
+		    public void onSwipeLeft() {
+		        
+		    }
+		   
+
+		});
 	}
+	
+
 	
 	private OnClickListener shareClickedListener = new OnClickListener() {
 		
@@ -103,8 +133,8 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 			sharingIntent.setType("text/plain");
 			
 			sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Check out Poink");
-			sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "I just found this useful app that helps me stay awake.It's called Poink.");
-			startActivity(Intent.createChooser(sharingIntent, "Share via"));
+			sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, parentActivity.getString(R.string.shareemailtext));
+			startActivity(Intent.createChooser(sharingIntent, parentActivity.getString(R.string.shareviatext)));
 		}
 	};
 	
