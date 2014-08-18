@@ -13,9 +13,11 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -219,12 +221,20 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		mNotificationManager = (NotificationManager) parentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
 		Context context = parentActivity.getApplicationContext();
 		NotificationCompat.Builder builder = new NotificationCompat.Builder(parentActivity)
-		.setSmallIcon(R.drawable.ic_notif);      
+		.setSmallIcon(R.drawable.ic_notif);
+		
 
-		Intent intent = new Intent(context, MainFragment.class);
+		Intent intent = new Intent(context, BaseFragmentActivity.class);
+		intent.setAction("android.intent.action.MAIN");
+        intent.addCategory("android.intent.category.LAUNCHER");
+       /* intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);*/
+
 		PendingIntent pIntent = PendingIntent.getActivity(context, 7 , intent, Notification.FLAG_ONGOING_EVENT);
 		builder.setContentIntent(pIntent);
 		builder.setOngoing(true);
+		builder.setContentTitle(parentActivity.getString(R.string.poinkisrunning));
+		builder.setContentText(parentActivity.getString(R.string.keepupright));
 		notif = builder.build();
 
 		
@@ -247,6 +257,24 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 	}
 
 
+	private void fireAnOngoingNotitification()
+	{
+		ServiceConnection mConnection = new ServiceConnection() {
+		    public void onServiceConnected(ComponentName className,android.os.IBinder binder) {
+		        ((PoinkNotificationManager.KillBinder) binder).service.startService(new Intent(
+		                parentActivity, PoinkNotificationManager.class));
+		       
+		        mNotificationManager.notify(PoinkNotificationManager.NOTIFICATION_ID,notif);
+		    }
+
+		    public void onServiceDisconnected(ComponentName className) {
+		    }
+
+		};
+		parentActivity.bindService(new Intent(parentActivity,PoinkNotificationManager.class), mConnection,Context.BIND_AUTO_CREATE);
+		
+	}
+	
 	private void firstAnimation() {
 		Animation firstAnimation = AnimationUtils.loadAnimation(parentActivity,
 				R.anim.first_position);
@@ -343,7 +371,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		middle_to_end_anim.setAnimationListener(new AnimationListener() {
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-				main.clearAnimation();
+				//main.clearAnimation();
 				View parent = (View) main.getParent();
 				int height = parent.getHeight();
 				int moveBy = height * 40 / 100;
@@ -359,7 +387,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 				hidden.startAnimation(breatheAnimation);
 				isOn = AppStates.On;
 				Toast.makeText(parentActivity, getText(R.string.poinkactivated), Toast.LENGTH_SHORT).show();
-				mNotificationManager.notify(0,notif);
+				fireAnOngoingNotitification();
 				if(Globals.wakelock ==null)
 				{
 					Globals.wakelock = powerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"Poink");
@@ -438,7 +466,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		middle_to_origin_anim.setAnimationListener(new AnimationListener() {
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-				main.clearAnimation();
+				//main.clearAnimation();
 				View parent = (View) main.getParent();
 				int height = parent.getHeight();
 				int moveBy = height * 40 / 100;
@@ -859,19 +887,19 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 
 	@Override
 	public void onStop() {
-		super.onStop();
+	 super.onStop();
 		
 	}
 	
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		
+		mNotificationManager.cancelAll();
 		audioManager.setStreamVolume (AudioManager.STREAM_ALARM,originalAlarmVolume,0);
 		mHandler.removeCallbacks(runningTimer);
 		UnregisterSensorListeners();
 		pitchRecordHandler.removeCallbacks(pitchIntervalTimer);
-		mNotificationManager.cancelAll();
+		
 		
 		
 	}

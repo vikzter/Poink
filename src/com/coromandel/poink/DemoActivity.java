@@ -27,6 +27,8 @@ public class DemoActivity extends LifecycleDispatchFragmentActivity {
 		if(PreferencesHelper.getDemoShownSetting(this))
 		{
 			Intent intent = new Intent(this, BaseFragmentActivity.class);
+			
+
 		    startActivity(intent);
 		    overridePendingTransition(0,0);
 		    finish();

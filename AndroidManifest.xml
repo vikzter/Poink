@@ -18,7 +18,7 @@
         android:label="@string/app_name"
           android:theme="@style/Theme.NoTitle"
         android:name="com.coromandel.poink.MyApp" >
-        
+        <service android:name="PoinkNotificationManager"></service>
         <activity
             android:name="com.coromandel.poink.DemoActivity"
             android:screenOrientation="portrait" 
@@ -34,7 +34,7 @@
         <activity
             android:name="com.coromandel.poink.BaseFragmentActivity"
             android:configChanges="keyboardHidden"
-            android:noHistory="true"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" >
         </activity>
         

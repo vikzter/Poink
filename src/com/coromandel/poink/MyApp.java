@@ -12,13 +12,15 @@ import android.os.Bundle;
 
 public class MyApp extends Application {
 
-
+	 private NotificationManager mNM;
+     
 
 @SuppressLint("NewApi")
 @Override
    public void onCreate() {
        super.onCreate();
        
+       mNM= (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
        ApplicationHelper.registerActivityLifecycleCallbacks(this,new ActivityLifecycleCallbacksCompat(){
            @Override
            public void onActivityCreated(Activity activity, Bundle bundle) {
@@ -46,9 +48,8 @@ public class MyApp extends Application {
 
        @Override
        public void onActivityDestroyed(Activity activity) {
-
-               NotificationManager mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
                mNM.cancelAll();
+               
                if(Globals.wakelock!=null && Globals.wakelock.isHeld())
                {
             	   Globals.wakelock.release();
