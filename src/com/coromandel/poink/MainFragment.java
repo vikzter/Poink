@@ -125,7 +125,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 	private final double MAXIMUM_PITCH_WHEN_OFF = -90;
 
 	
-	private final double MIDDLE_PITCH_WHEN_ON = -60;
+	//private final double MIDDLE_PITCH_WHEN_ON = -60;
 	private final double MAXIMUM_PITCH_WHEN_ON = -90;
 
 	private Vibrator vibrator;
@@ -529,9 +529,10 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
              
             Runnable runnable = new Runnable() {
                 public void run() {
-            
                     UnregisterSensorListeners();
                     RegisterSensorListeners();
+                	if (isVibratorOn)// HACKY to get vibrator to switch back on, if screen had turned off while phone was vibrating which causes vibrator to turn off
+        				StartVibrate();
                 }
             };
 

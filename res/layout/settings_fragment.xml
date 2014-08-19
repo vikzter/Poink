@@ -29,6 +29,7 @@
                   android:id="@+id/imgv_settings2"
                   android:layout_width="wrap_content"
                   style="@style/settingsstyle"
+                  android:contentDescription="@string/demoimagecontentdescription"
                   android:layout_marginTop="7dp"
                   android:layout_marginLeft="15dp"
                   android:src="@drawable/settings_image" />

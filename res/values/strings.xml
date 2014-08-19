@@ -42,7 +42,7 @@
     <string name="No">No</string>
     <string name="poinkisrunning">Poink is ON</string>
     <string name="keepupright">Keep holding the phone upright</string>
-    
+    <string name="demoimagecontentdescription">Demo Image</string>
     <integer name="tiltAngleDefault">45</integer>
     <integer name="vibrateSecondsDefault">10</integer>
 </resources>

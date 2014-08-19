@@ -1,6 +1,5 @@
 package com.coromandel.poink;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;

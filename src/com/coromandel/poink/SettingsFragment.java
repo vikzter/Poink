@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
-import android.widget.LinearLayout;
+
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -36,7 +36,7 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 	private RadioButton degree75;
 	private RadioButton secs5;
 	private RadioButton secs10;
-	private LinearLayout rootLayout;
+	
 	private View view;
 	
 	@Override
@@ -60,7 +60,7 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 		
 		parentActivity = getActivity();
 		
-		rootLayout = (LinearLayout) parentActivity.findViewById(R.id.settings_root_layout);
+		
 		share = (TextView) parentActivity.findViewById(R.id.tv_sharecircle);
 		
 		tiltAngle = (TextView) parentActivity.findViewById(R.id.tv_angletostartalerts);

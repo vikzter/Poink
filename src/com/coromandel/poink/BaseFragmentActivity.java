@@ -8,7 +8,6 @@ import com.coromandel.poink.MainFragment.AppStates;
 
 
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;

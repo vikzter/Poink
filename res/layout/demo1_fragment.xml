@@ -6,6 +6,7 @@
      >
 
      <ImageView android:id="@+id/imgv_demo1image"
+         android:contentDescription="@string/demoimagecontentdescription"
        android:layout_width="wrap_content"
          android:layout_marginTop="@dimen/demo_image_topmargin"
        android:layout_centerHorizontal="true"
