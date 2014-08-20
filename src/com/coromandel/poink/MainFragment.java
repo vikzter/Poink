@@ -834,21 +834,21 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		    	if(isOn==AppStates.On || isOn==AppStates.TransitingToOn)
 		    	{
 		    		isOn = AppStates.Paused;
-		    		Toast.makeText(parentActivity, getText(R.string.poinkpaused), Toast.LENGTH_SHORT).show();
+		    		Toast.makeText(parentActivity, getText(R.string.poinkpaused), Toast.LENGTH_LONG).show();
 		    	}
 		     break;
 		    case TelephonyManager.CALL_STATE_OFFHOOK:
 		    	if(isOn==AppStates.On || isOn==AppStates.TransitingToOn)
 		    	{
 		    		isOn = AppStates.Paused;
-		    		Toast.makeText(parentActivity, getText(R.string.poinkpaused), Toast.LENGTH_SHORT).show();
+		    		Toast.makeText(parentActivity, getText(R.string.poinkpaused), Toast.LENGTH_LONG).show();
 		    	}
 		     break;
 		    case TelephonyManager.CALL_STATE_IDLE:
 		    	if(isOn==AppStates.Paused)
 		    	{
 		    		isOn = AppStates.On;
-		    		Toast.makeText(parentActivity, getText(R.string.poinkactivatedbackagain), Toast.LENGTH_SHORT).show();
+		    		Toast.makeText(parentActivity, getText(R.string.poinkactivatedbackagain), Toast.LENGTH_LONG).show();
 		    	}
 		     break;
 		    
