@@ -17,7 +17,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 
@@ -68,11 +70,28 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 	}
 
 	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.action_settings:
+	    	if(settingsFragment.isVisible())
+	    		return true;
+	    	
+	    	this.openSettings();
+	        return true;
+	    case R.id.action_replaydemo:
+	    	PreferencesHelper.setDemoShownSetting(this, false);
+	    	Toast.makeText(this, getText(R.string.demowillbeplayednexttime), Toast.LENGTH_LONG).show();
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	@Override
 	public void onAttachFragment(Fragment fragment) {
 		// TODO Auto-generated method stub
 		super.onAttachFragment(fragment);
-
-		
 
 	}
 	
@@ -83,12 +102,17 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 			fragmentManager.popBackStack();
 		}else
 		{
-			 FragmentTransaction ft = fragmentManager.beginTransaction();
-	    	    ft.setCustomAnimations(R.anim.slide_in_up, 0,0,R.anim.slide_out_up);
-	    	    ft.addToBackStack(null);
-	    	    ft.add(R.id.content_frame, settingsFragment);
-	    	   ft.commit();
+			 this.openSettings();
 		}
+	}
+	
+	private void openSettings()
+	{
+		FragmentTransaction ft = fragmentManager.beginTransaction();
+	    ft.setCustomAnimations(R.anim.slide_in_up, 0,0,R.anim.slide_out_up);
+	    ft.addToBackStack(null);
+	    ft.add(R.id.content_frame, settingsFragment);
+	    ft.commit();
 	}
 	
 	
@@ -122,6 +146,13 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 	
 	 @Override
 	 public void onBackPressed() { 
+		 
+		 if(settingsFragment.isVisible())
+		 {
+			 fragmentManager.popBackStack();
+			 return;
+		 }
+		 
 	      //TODO: Handle back press on application and in all other starting activities
 	    	//return;
 		 if(firstFragment!=null && firstFragment.isOn != AppStates.Off & firstFragment.isOn != AppStates.TransitingToOff)

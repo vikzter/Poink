@@ -913,5 +913,8 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 	}
 	
 	
+	
+	
+	
 
 }
