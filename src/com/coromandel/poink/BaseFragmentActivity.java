@@ -72,9 +72,13 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	    case R.id.action_settings:
+	    	if((firstFragment!=null && firstFragment.isOn==AppStates.Paused))
+				return true;
+	    	
 	    	if(settingsFragment.isVisible())
 	    		return true;
 	    	
@@ -98,6 +102,9 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 	
 	protected void settingsClicked()
 	{
+		if((firstFragment!=null && firstFragment.isOn==AppStates.Paused))
+			return;
+		
 		if(settingsFragment.isVisible())
 		{
 			fragmentManager.popBackStack();
@@ -109,6 +116,7 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 	
 	private void openSettings()
 	{
+		
 		FragmentTransaction ft = fragmentManager.beginTransaction();
 	    ft.setCustomAnimations(R.anim.slide_in_up, 0,0,R.anim.slide_out_up);
 	    ft.addToBackStack(null);
@@ -147,6 +155,9 @@ public class BaseFragmentActivity extends LifecycleDispatchFragmentActivity {
 	
 	 @Override
 	 public void onBackPressed() { 
+		 
+		 if(firstFragment!=null && firstFragment.isOn==AppStates.Paused)
+				return;
 		 
 		 if(settingsFragment.isVisible())
 		 {

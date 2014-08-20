@@ -81,7 +81,16 @@ public class SettingsFragment extends BaseAnimationFragment implements IFragment
 		secs5.setTypeface(tf,Typeface.NORMAL);
 		secs10.setTypeface(tf,Typeface.NORMAL);
 		
-		secs10.setChecked(true);
+		if(Globals.getVibrateFor(parentActivity)==5)
+			secs5.setChecked(true);
+		else
+			secs10.setChecked(true);
+		
+		if(Globals.getTiltAngle(parentActivity)==45)
+			degree45.setChecked(true);
+		else
+			degree75.setChecked(true);
+		
 		
 		RadioGroup rg_angle=(RadioGroup) parentActivity.findViewById(R.id.rg_angle);
 		rg_angle.setOnCheckedChangeListener(angleChangedListener);

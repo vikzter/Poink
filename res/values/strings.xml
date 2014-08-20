@@ -44,8 +44,8 @@
     <string name="keepupright">Keep holding the phone upright</string>
     <string name="demoimagecontentdescription">Demo Image</string>
     <string name="replaydemo">Replay tutorial</string>
-    <string name="demowillbeplayednexttime">Tutorial will be played again next time the Poink app is opened</string>
-    
+    <string name="demowillbeplayednexttime">The tutorial will be played next time the Poink app is opened</string>
+    <string name="paused">Paused</string>
     
     <integer name="tiltAngleDefault">45</integer>
     <integer name="vibrateSecondsDefault">10</integer>

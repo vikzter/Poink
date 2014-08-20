@@ -326,6 +326,9 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 	@SuppressLint("NewApi")
 	public void mainClicked(View v) {
 
+		if(isOn==AppStates.Paused || isOn==AppStates.TransitingToOn || isOn==AppStates.TransitingToOff)
+			return;
+		
 		if (isOn == AppStates.On) {
 			isOn = AppStates.TransitingToOff;
 			this.StopTimer();
@@ -385,7 +388,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 				params.setMargins(0, maintop + moveBy, 0, 0);
 				main.setLayoutParams(params);
 				hidden.startAnimation(breatheAnimation);
-				isOn = AppStates.On;
+				
 				Toast.makeText(parentActivity, getText(R.string.poinkactivated), Toast.LENGTH_SHORT).show();
 				fireAnOngoingNotitification();
 				if(Globals.wakelock ==null)
@@ -397,6 +400,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 					Globals.wakelock.acquire();
 				}
 				textDisplay.setText(R.string.itsallgood);
+				isOn = AppStates.On;
 
 			}
 
@@ -489,7 +493,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 				params.setMargins(0, middletop - middlemoveBy, 0, 0);
 				middle.setLayoutParams(params);
 				hidden.clearAnimation();
-				isOn = AppStates.Off;
+				
 				Toast.makeText(parentActivity, getText(R.string.poinkstopped), Toast.LENGTH_SHORT).show();
 				mNotificationManager.cancelAll();
 				
@@ -498,6 +502,8 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 					Globals.wakelock.release();
 					Globals.wakelock = null;
 				}
+				
+				isOn = AppStates.Off;
 
 			}
 
@@ -661,6 +667,10 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 					NoAlertsUser();
 				}
 
+			} else if (isOn==AppStates.Paused)
+			{
+				NoAlertsUser();
+				textDisplay.setText(R.string.paused);
 			}
 
 			pitchRecordHandler.postDelayed(this, PITCH_RECORD_INTERVAL);
@@ -848,6 +858,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		    	if(isOn==AppStates.Paused)
 		    	{
 		    		isOn = AppStates.On;
+		    		textDisplay.setText(R.string.itsallgood);
 		    		Toast.makeText(parentActivity, getText(R.string.poinkactivatedbackagain), Toast.LENGTH_LONG).show();
 		    	}
 		     break;

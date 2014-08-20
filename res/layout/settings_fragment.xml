@@ -63,7 +63,7 @@
             android:id="@+id/rb_angle45"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
+            
             android:textSize="@dimen/settings_radiotext_size"
             android:textColor="@android:color/white"
             android:clickable="true"
@@ -110,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:checked="true"
+            
             android:textColor="@android:color/white"
             android:textSize="@dimen/settings_radiotext_size"
             android:text="@string/vibrate5" />
