@@ -142,7 +142,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 	PowerManager powerManager;
 	private final int SCREEN_OFF_RECEIVER_DELAY = 800;
 	
-	
+	private byte alternate = 0;
 	
 	@SuppressLint("NewApi")
 	@Override
@@ -374,7 +374,15 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 		middle_to_end_anim.setAnimationListener(new AnimationListener() {
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-				//main.clearAnimation();
+				
+				main.clearAnimation();
+				
+				if(alternate==0)
+				{	alternate=1;  //HACKY BIG TIME, clearanimation calls onanimationend again, and without that animation not smooth, so 
+					return;       // for each time there are 2 calls, alternating to execute only one of those 2 calls each time
+				}
+				alternate=0;
+				
 				View parent = (View) main.getParent();
 				int height = parent.getHeight();
 				int moveBy = height * 40 / 100;
@@ -386,6 +394,7 @@ public class MainFragment extends Fragment implements SensorEventListener,IFragm
 				params.addRule(RelativeLayout.CENTER_HORIZONTAL, -1);
 
 				params.setMargins(0, maintop + moveBy, 0, 0);
+				//main.invalidate();
 				main.setLayoutParams(params);
 				hidden.startAnimation(breatheAnimation);
 				
